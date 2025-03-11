@@ -170,7 +170,7 @@ jekyll_compose:
       tags:
       published: false
       sitemap: false
-
+future: true
 # ------------ The following options are not recommended to be modified ------------------
 
 kramdown:
