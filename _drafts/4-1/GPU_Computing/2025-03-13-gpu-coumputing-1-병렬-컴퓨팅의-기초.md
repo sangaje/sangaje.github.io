@@ -14,7 +14,7 @@ tags:
 math: true
 mermaid: true
 comments: true
-date: 2025-03-13 14:27 +0900
+date: 2025-03-13 19:34 +0900
 ---
 ## 병렬 컴퓨팅(Parallel Computing) 이란?
 
