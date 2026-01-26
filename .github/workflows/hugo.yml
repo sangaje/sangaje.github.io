@@ -27,8 +27,8 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: "0.125.7" # 고정 권장 (원하면 최신으로 올려도 됨)
-          extended: true          # Blowfish/SCSS 쓰면 거의 항상 필요
+          hugo-version: "0.154.5"
+          extended: true
 
       - name: Setup Pages
         id: pages
