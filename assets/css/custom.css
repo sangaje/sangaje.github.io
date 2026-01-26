@@ -1,3 +1,7 @@
 .tag-cloud { display: flex; flex-wrap: wrap; gap: .5rem; }
 .tag { padding: .25rem .6rem; border: 1px solid var(--border); border-radius: 999px; text-decoration: none; }
 .tag small { opacity: .7; }
+
+.left-align {
+  text-align: left;
+}
