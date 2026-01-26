@@ -1,0 +1,9 @@
+{{- $limit := (.Get "limit") | default "30" | int -}}
+
+<div class="tag-cloud">
+  {{- range first $limit (sort site.Taxonomies.tags "Count" "desc") -}}
+    <a class="tag" href="{{ .Page.RelPermalink }}">
+      #{{ .Page.Title }} <small>({{ .Count }})</small>
+    </a>
+  {{- end -}}
+</div>

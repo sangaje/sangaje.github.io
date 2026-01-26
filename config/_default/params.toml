@@ -136,6 +136,11 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
   cardView = false
   cardViewScreenWidth = false
 
+
+[mermaid]
+  enable = true
+
+
 [firebase]
   # apiKey = "XXXXXX"
   # authDomain = "XXXXXX"
