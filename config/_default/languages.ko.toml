@@ -9,16 +9,16 @@ title = "죽어가는 산에사는가재의 블로그"
   isoCode = "ko"
   rtl = false
   dateFormat = "2 January 2006"
-  # logo = "img/logo.png"
-  # secondaryLogo = "img/secondary-logo.png"
-  # description = "My awesome website"
+  logo = "img/logo.png"
+  secondaryLogo = "img/secondary-logo.png"
+  description = "My awesome website"
   # copyright = "Copy, _right?_ :thinking_face:"
 
 [params.author]
   name = "산에사는가재"
   email = "qhals8380@gmail.com"
-  # image = "img/blowfish_logo.png"
-  # imageQuality = 96
+  image = "img/blowfish_logo.png"
+  imageQuality = 96
   headline = "살려주세요"
   bio = "광운대학교 컴퓨터정보공학부 학부 졸업생."
   links = [

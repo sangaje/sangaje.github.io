@@ -11,3 +11,7 @@ graph TD
   A[Start] --> B[Works?]
   B --> C[Yes]
 ```
+
+![diagram](@smart-vault/arch.png)
+![diagram](/images/smart-vault/arch.png)
+![test](/images/smart-vault/arch.png)

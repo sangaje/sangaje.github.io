@@ -142,6 +142,8 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
 [mermaid]
   enable = true
 
+[media]
+  imageBaseURL = "/images"
 
 [firebase]
   # apiKey = "XXXXXX"

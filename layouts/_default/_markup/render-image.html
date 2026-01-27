@@ -1,0 +1,12 @@
+{{- $src := .Destination -}}
+{{- $base := site.Params.media.imageBaseURL | default "" -}}
+
+{{- if strings.HasPrefix $src "@" -}}
+  {{- $src = printf "%s/%s" $base (strings.TrimPrefix "@" $src) -}}
+{{- end -}}
+
+<img
+  src="{{ $src }}"
+  alt="{{ .Text }}"
+  {{ with .Title }}title="{{ . }}"{{ end }}
+/>
