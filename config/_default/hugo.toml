@@ -39,6 +39,10 @@ googleAnalytics = "G-L0F8R9H6D3"
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
+[services]
+  [services.disqus]
+    shortname = 'sangaje'
+
 [related]
   threshold = 0
   toLower = false
