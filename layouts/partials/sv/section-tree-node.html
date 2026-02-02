@@ -1,0 +1,25 @@
+{{- $ctx := .ctx -}}
+{{- $node := .node -}}
+
+<ul class="sv-tree-list">
+  {{- /* 하위 섹션들 */ -}}
+  {{- range $node.Sections.ByWeight.ByTitle -}}
+    {{- $active := or (eq $ctx.RelPermalink .RelPermalink) ($ctx.IsDescendant .) -}}
+    <li class="sv-tree-item sv-tree-section {{ if $active }}is-active{{ end }}">
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+
+      {{- /* 현재 경로에 해당하는 섹션만 펼침 */ -}}
+      {{- if $active -}}
+        {{- partial "sv/section-tree-node.html" (dict "ctx" $ctx "node" .) -}}
+      {{- end -}}
+    </li>
+  {{- end -}}
+
+  {{- /* 현재 섹션의 글들(leaf pages) */ -}}
+  {{- range $node.RegularPages.ByWeight.ByDate.Reverse -}}
+    {{- $active := eq $ctx.RelPermalink .RelPermalink -}}
+    <li class="sv-tree-item sv-tree-page {{ if $active }}is-active{{ end }}">
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </li>
+  {{- end -}}
+</ul>

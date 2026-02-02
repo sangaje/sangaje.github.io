@@ -1,0 +1,15 @@
+{{- $root := .Site.GetPage "section" .Section -}}
+{{- if not $root -}}
+  <div class="sv-sidebar-empty"></div>
+{{- else -}}
+  <nav
+    class="sv-tree"
+    aria-label="Section navigation"
+    style="padding-left: 16px; padding-right: 8px;">
+    <div class="sv-tree-title" style="padding-top: 8px;">
+      <a href="{{ $root.RelPermalink }}">{{ $root.Title }}</a>
+    </div>
+
+    {{- partial "sv/section-tree-node.html" (dict "ctx" . "node" $root) -}}
+  </nav>
+{{- end -}}

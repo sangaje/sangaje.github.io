@@ -5,3 +5,55 @@
 .left-align {
   text-align: left;
 }
+
+/* 2컬럼: 좌측 사이드바 + 본문 */
+.sv-layout{
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 1.25rem;
+}
+
+/* 좁은 화면에서는 사이드바 숨김(원하면 나중에 토글로 바꿀 수 있음) */
+@media (max-width: 1024px){
+  .sv-layout{ grid-template-columns: 1fr; }
+  .sv-sidebar{ display: none; }
+}
+
+.sv-sidebar{
+  position: sticky;
+  top: 1rem;
+  align-self: start;
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+  padding-right: .5rem;
+  border-right: 1px solid rgba(0,0,0,.08);
+}
+
+.sv-tree-title a{
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* 트리 리스트 */
+.sv-tree-list{
+  list-style: none;
+  padding-left: .75rem;
+  margin: .5rem 0;
+}
+
+.sv-tree-item{
+  margin: .15rem 0;
+}
+
+/* ✅ 줄바꿈 싫으면: 한 줄 + ... */
+.sv-tree-item a{
+  display: block;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sv-tree-item.is-active > a{
+  font-weight: 700;
+}
