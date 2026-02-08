@@ -81,3 +81,10 @@
 }
 
 /* 마크다운 제목과 본문 들여쓰기는 JavaScript로 처리 (indent-content.js) */
+
+/* 이미지 중앙 정렬 */
+.prose img {
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
