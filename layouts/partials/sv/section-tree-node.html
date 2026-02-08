@@ -16,7 +16,7 @@
   {{- end -}}
 
   {{- /* 현재 섹션의 글들(leaf pages) */ -}}
-  {{- range $node.RegularPages.ByWeight.ByDate.Reverse -}}
+  {{- range $node.RegularPages.ByWeight.ByDate -}}
     {{- $active := eq $ctx.RelPermalink .RelPermalink -}}
     <li class="sv-tree-item sv-tree-page {{ if $active }}is-active{{ end }}">
       <a href="{{ .RelPermalink }}">{{ .Title }}</a>
