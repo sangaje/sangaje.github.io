@@ -24,6 +24,21 @@
   .sv-sidebar{ display: none; }
 }
 
+/* 모바일에서는 본문 들여쓰기 제거 */
+@media (max-width: 768px){
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose p,
+  .prose ul,
+  .prose ol,
+  .prose pre,
+  .prose blockquote,
+  .prose table {
+    margin-left: 0 !important;
+  }
+}
+
 .sv-sidebar{
   position: sticky;
   top: 1rem;
