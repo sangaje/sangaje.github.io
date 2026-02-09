@@ -9,7 +9,7 @@ showAuthor: true
 > 우리는 기존에 배운것 이외의 명령어인 CALL, RET, DUTY, MIN 등을 추가로 학습하여 기존의 수업에서 배운 개발 방법을 확장하였다.
 > 이를 통하여 낮은 가독성, 빈번한 이중코일, 낮은 확장성 문제를 개선하데 성공하였다.
 
-전체 코드 및 HMI, SERVO 파라미터는 다음 레파지토리를 참조 [PLC_Mini_Project](https://github.com/sangaje/PLC_Mini_Project)
+전체 코드 및 HMI, SERVO 파라미터, 발표자료는 다음 레파지토리를 참조 [PLC_Mini_Project](https://github.com/sangaje/PLC_Mini_Project)
 
 - [1. 프로젝트 소개](#1-프로젝트-소개)
   - [1.1. 개요](#11-개요)
