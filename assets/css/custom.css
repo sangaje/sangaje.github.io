@@ -88,3 +88,24 @@
   margin-left: auto !important;
   margin-right: auto !important;
 }
+
+
+/* 1. 참고문헌의 긴 URL 주소를 숨기고 아이콘/글자로 대체 */
+.csl-right-inline a[href^="http"] {
+    font-size: 0; /* 원래 긴 주소는 숨김 */
+    text-decoration: none;
+}
+
+.csl-right-inline a[href^="http"]::before {
+    content: " [Link] ↗"; /* 여기에 '원문보기'라고 써도 됩니다 */
+    font-size: 0.85rem;
+    color: #3b82f6;
+    font-weight: bold;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+/* 2. "Available:" 뒤에 남은 빈 공간이나 쉼표 정리 (선택사항) */
+.csl-right-inline {
+    word-break: break-all;
+}

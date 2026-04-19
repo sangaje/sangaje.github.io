@@ -1,0 +1,23 @@
+#+title: 신호처리
+#+HUGO_BASE_DIR: ~/sangaje.github.io/
+#+HUGO_SECTION: posts/Signal_Processing
+#+HUGO_CATEGORIES: 신호처리
+#+HUGO_TAGS: 신호처리
+#+HUGO_AUTO_EXPORT: t
+#+HUGO_DRAFT: true
+
+* 칼만 필터 공부하기 (1) :칼만필터:제어공학:
+:PROPERTIES:
+:EXPORT_FILE_NAME: signal-processing-kalman-filter-1
+:END:
+#+bibliography: ./shared/Reference/Signal_Processing/Kalman_Filter.bib
+
+#+BEGIN_QUOTE
+KDT 부트캠프 과정을 수강하면서 우연히 알게 된 칼만 필터에 대해 공부하며 작성한 글이다. 해당 과정에서 STM32 자유 프로젝트를 수행하던 중에 칼만 필터를 통해 센서 데이터를 보정하는 아이디어를 얻게 되었고, 이를 구현하기 위해 칼만 필터에 대한 이해가 필요했다. 비록 구현은 끝났지만 칼만 필터에 대한 이해가 부족하여, 이를 보완하기 위해 공부한 내용을 정리한 글이다. 칼만 필터는 제어공학에서 자주 사용되는 알고리즘으로, 시스템의 상태를 추정하는 데 사용된다. 필자의 경우 앞서 말한 프로젝트에서 센서 데이터의 노이즈를 줄이고 정확한 추정을 가능하게 하는 데 유용했다. 이번 글에서는 칼만 필터의 기본 개념과 수학적 원리를 공부한 내용을 정리해보려고 한다.
+#+END_QUOTE
+
+** 칼만 필터란?
+칼만 필터는[cite:@enwiki:1341825488]
+
+** Reference
+#+print_bibliography:
