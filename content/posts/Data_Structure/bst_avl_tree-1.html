@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>bst_avl_tree-1.html</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8"/>
+<link rel="stylesheet" type="text/css" media="all" href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"  />
+<link rel="stylesheet" type="text/css" media="all" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css"  /><meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'><style> body { box-sizing: border-box; max-width: 740px; width: 100%; margin: 40px auto; padding: 0 10px; } </style><script id='MathJax-script' async src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'></script><script src='https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js'></script><script>document.addEventListener('DOMContentLoaded', () => { document.body.classList.add('markdown-body'); document.querySelectorAll('pre[lang] > code').forEach((code) => { code.classList.add(code.parentElement.lang); }); document.querySelectorAll('pre > code').forEach((code) => { hljs.highlightBlock(code); }); });</script>
+</head>
+
+<body>
+
+<p>+++ title = “BST-AVL Tree (1) 기초” author = [“bomin”] tags =
+[“자료구조”] categories = [“자료구조”] draft = true +++</p>
+<h2 id="avl-tree란">AVL Tree란?</h2>
+<p>AVL Tree는 자가 균형 이진 탐색 트리 (self-balancing BST)의 한 종류로,
+1962년 G. M. Adel’son-Vel’skii 과 E. M. Landis의 논문에서 처음
+소개되었으며<a href="#citeproc_bib_item_1">[1]</a>, AVL Tree의 이름 AVL
+은 이 두 사람의 이름에서 따온 것이다. 이는 각 노드의 왼쪽과 오른쪽
+서브트리의 높이 차이가 최대 1이 되도록 유지하는 트리 구조로, 삽입과 삭제
+연산 후에도 균형을 유지하기 위해 회전 연산을 사용한다. AVL Tree는 균형
+조건을 엄격하게 유지하기 때문에 삽입과 탐색 연산이 빠르다. 하지만 해당
+연산 시 추가적인 회전 연산이 필요하므로, 구현이 기존의 BST에 비해 다소
+복잡하다.</p>
+<p>기존의 BST에서는 삽입과 삭제 연산이 트리의 균형을 깨뜨릴 수 있지만,
+AVL Tree에서는 이러한 연산 후에도 균형을 유지하기 위해 회전 연산이
+수행된다. 예를 들어, 노드가 삽입된 후에 균형이 깨진 경우, 단일 회전 또는
+이중 회전을 통해 트리를 재구성하여 균형을 회복한다. 이러한 회전은 트리의
+높이를 최소화하여 탐색 속도를 유지하는 데 중요한 역할을 한다.</p>
+<h2 id="avl-tree의-균형-계수">AVL Tree의 균형 계수</h2>
+<p>AVL Tree는 각 노드에 균형 계수 (balance factor)를 저장하여, 각 노드의
+왼쪽과 오른쪽 서브트리의 높이 차이를 나타낸다. 균형 계수는 -1, 0, 1 중
+하나의 값을 가지며, 이 값이 범위를 벗어날 경우 트리가 불균형하다고
+판단한다. 삽입이나 삭제 연산 후에 균형 계수가 범위를 벗어나면, 트리를
+재구성하여 균형을 회복한다.그림[<a
+href="#figure--fig:avl-cases">1</a>]은 AVL Tree에서 발생할 수 있는 4가지
+불균형 케이스 (LL, RR, LR, RL)를 보여주며 이때 균형 계수 \(BF\) 는 식[<a
+href="#org25bc61b">1</a>]과 같의 정의된다. 그림에서 최 상단 노드의 균형
+계수는 +2 또난 -2로, \({-1,0,+1}\) 에 속해있지 않아 불균형하다고 할 수
+있다. 사실 그림만 봐도 한쪽으로 쏠려있는 것을 알 수 있지만, 컴퓨터로
+연산할 때마다 사람의 눈으로 확인할 수는 없으므로, 균형 계수를 계산하여
+불균형 여부를 판단하는 것이다.</p>
+#+NAME: eq:avl_balance_factor #+CAPTION: AVL Tree의 균형 계수 정의
+<div class="math">
+<p><span class="math display">\[\begin{equation}
+\label{eq:avl_balance_factor}
+BF(v) = h(v_{left}) - h(v_{right})
+\end{equation}\]</span></p>
+</div>
+<p>\[BF(v)=h(v_{left})-h(v_{right})\] \[ S(n) = ] \[example_{}):
+BF_{top}=h(v_{left})-h(v_{right})=2-0=+2\]</p>
+<p><a id="figure--fig:avl-cases"></a></p>
+<p>{{&lt; figure src=“/ox-hugo/avl_all_cases_bordered.png”
+caption=“<span class="\&quot;figure-number\&quot;">Figure 1: </span>AVL
+트리의 4가지 불균형 케이스 (LL, RR, LR, RL)” &gt;}}</p>
+<h2 id="avl-tree의-회전-연산">AVL Tree의 회전 연산</h2>
+<p>식<a href="#org25bc61b">1</a>와같이 AVL Tree의 균형 계수를 정했을때,
+우리는 균형 계수의 절댓값이 1을 초과하면 이를 불균형 하다고 판단했다.
+이는 AVL Tree는 \(v V\)에 대해 그들 의 자식 노드 \({left}, {right}\)의
+높이 차이가 1 이상 차이나면 이를 다시 균형을 맞추는 과정이 필요함을
+시사한다. AVL Tree는 이러한 균형을 맞추는 과정을 <sub>회전</sub>을 통해
+수행한다. 즉 앞서 본 그림<a href="#figure--fig:avl-cases">1</a>에서
+보이는 4가지 불균형 케이스 (LL, RR, LR, RL)에서 각각의 경우에 따라
+알맞은 회전을 선택하여 수행해야 한다.</p>
+<h2 id="references">References</h2>
+<div class="csl-bib-body" role="list">
+<div class="csl-entry" role="listitem">
+<a id="citeproc_bib_item_1"></a>
+<div class="csl-left-margin">
+[1]
+</div>
+<div class="csl-right-inline">
+G. Adelson-Velsky and E. M. Landis, “An algorithm for the organization
+of information,” <i>Soviet mathematics doklady</i>, vol. 3,
+pp. 1259–1263, 1962,
+<a href="https://zhjwpku.com/assets/pdf/AED2-10-avl-paper.pdf">https://zhjwpku.com/assets/pdf/AED2-10-avl-paper.pdf</a>
+</div>
+</div>
+</div>
+
+</body>
+</html>

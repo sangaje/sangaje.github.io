@@ -1,0 +1,25 @@
+<div class="algorithm-wrapper" style="margin: 2rem 0;">
+    <pre id="{{ .Get "id" | default "algo" }}" class="pseudocode" style="display:none;">
+        {{ .Inner | safeHTML }}
+    </pre>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var el = document.getElementById("{{ .Get "id" | default "algo" }}");
+        if (el && typeof pseudocode !== 'undefined') {
+            try {
+                pseudocode.renderElement(el, {
+                    indentSize: '1.2em',
+                    commentDelimiter: '//',
+                    lineNumber: true,
+                    noEnd: false
+                });
+                el.style.display = 'block'; // 렌더링 완료 후 노출
+            } catch (e) {
+                console.error("Pseudocode rendering failed:", e);
+                el.style.display = 'block'; // 실패 시 원문이라도 노출
+            }
+        }
+    });
+</script>

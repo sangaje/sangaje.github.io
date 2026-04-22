@@ -1,14 +1,33 @@
 <head>
-<script>
-window.MathJax = {
-    tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']],
-    displayMath: [['$$', '$$'], ['\\[', '\\]']],
-    processEscapes: true
-    }
-};
-</script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.js"></script>
+  <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            tags: 'ams', // AMS 수식 번호 매기기 활성화
+            packages: {'[+]': ['base', 'ams', 'noerrors', 'noundefined']}
+        },
+        loader: {
+            load: ['[tex]/ams']
+        },
+        /* Strict Compliance Required: 좌측 정렬 정책 및 오프셋 설정 */
+        chtml: {
+            displayAlign: 'left',
+            displayIndent: '2em'  // 본문 문맥과의 시각적 분리를 위한 좌측 여백
+        },
+        svg: {
+            displayAlign: 'left',
+            displayIndent: '2em'
+        }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <meta charset="utf-8">
   {{ with .Site.Language.Params.htmlCode | default .Site.LanguageCode }}
     <meta http-equiv="content-language" content="{{ . }}">
